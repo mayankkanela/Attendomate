@@ -41,8 +41,9 @@ public class CalculateAttendanceAdapter extends RecyclerView.Adapter <CalculateA
             holder.name.setText("Name  :"+student.getName());
             holder.sNo.setText("Roll No :"+student.getrNo());
             Long temp =student.getAttCount();
-            temp=(temp/30)*100;
-            holder.percentage.setText(temp.toString()+"%");
+            Float temp1=temp.floatValue();
+            temp1=(temp1/30)*100;
+            holder.percentage.setText(temp1.toString()+"%");
             if(student.getImageUrl()!=null)
                 Glide.with(context).load(student.getImageUrl()).into(holder.pic);
 
