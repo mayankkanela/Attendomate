@@ -3,21 +3,42 @@ package com.mohil.attendomate;
 import android.widget.ImageView;
 
 public class Student {
-    int rNo;
+    String rNo;
     String name;
-    ImageView imageView;
-
-    public Student(int rNo, String name, ImageView imageView) {
-        this.rNo = rNo;
-        this.name = name;
-        this.imageView = imageView;
+    String imageUrl;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public int getrNo() {
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+
+
+
+    public Long getAttCount() {
+        return attCount;
+    }
+
+    public void setAttCount(Long attCount) {
+        this.attCount = attCount;
+    }
+
+    Long attCount;
+
+    public Student(String rNo, String name, Long attCount,String imageUrl) {
+        this.rNo = rNo;
+        this.name = name;
+        this.imageUrl = imageUrl;
+        this.attCount= attCount;
+    }
+
+    public String getrNo() {
         return rNo;
     }
 
-    public void setrNo(int rNo) {
+    public void setrNo(String rNo) {
         this.rNo = rNo;
     }
 
@@ -27,13 +48,5 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public ImageView getImageView() {
-        return imageView;
-    }
-
-    public void setImageView(ImageView imageView) {
-        this.imageView = imageView;
     }
 }

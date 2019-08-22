@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "36747847431",
+    "firebase_url": "https://attendomate.firebaseio.com",
+    "project_id": "attendomate",
+    "storage_bucket": "attendomate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36747847431:android:9d1d20de0d8643d1",
+        "android_client_info": {
+          "package_name": "com.mohil.attendomate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36747847431-qsdqa10m3andiimfnhv1abmoihdb15h0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfZPOyEs3Pyqc6NC9jTYYEzsU0g5v7F6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36747847431-qsdqa10m3andiimfnhv1abmoihdb15h0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

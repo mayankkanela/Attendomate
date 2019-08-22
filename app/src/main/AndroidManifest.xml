@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MarkAttendance"></activity>
+        <activity android:name=".CalculateAttendance"></activity>
+        <activity android:name=".MarkAttendance" />
         <activity android:name=".Calender" />
         <activity android:name=".MainActivity">
             <intent-filter>
