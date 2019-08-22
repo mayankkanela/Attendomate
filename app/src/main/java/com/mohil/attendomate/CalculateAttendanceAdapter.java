@@ -38,8 +38,8 @@ public class CalculateAttendanceAdapter extends RecyclerView.Adapter <CalculateA
         Student student=students.get(position);
         if(student!=null)
         {
-            holder.name.setText("Name"+student.getName());
-            holder.sNo.setText("Name"+student.getrNo());
+            holder.name.setText("Name  :"+student.getName());
+            holder.sNo.setText("Roll No :"+student.getrNo());
             Long temp =student.getAttCount();
             temp=(temp/30)*100;
             holder.percentage.setText(temp.toString()+"%");

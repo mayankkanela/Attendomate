@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     Button mark;
     Button calc;
     Intent intent;
+    Intent intent1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         calc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            intent=new Intent(MainActivity.this,CalculateAttendance.class);
-            startActivity(intent);
+            intent1=new Intent(MainActivity.this,CalculateAttendance.class);
+            startActivity(intent1);
 
             }
         });
