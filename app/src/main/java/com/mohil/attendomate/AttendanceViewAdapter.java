@@ -26,9 +26,8 @@ import java.util.ArrayList;
 
 public class AttendanceViewAdapter extends RecyclerView.Adapter<AttendanceViewAdapter.ViewHolder> {
   Context context;
-  int flag;
-  int firstclicked;
-  int pos;
+
+
   CollectionReference collectionReference;
   FirebaseFirestore db;
     private ArrayList<Student> students;
@@ -36,8 +35,7 @@ public class AttendanceViewAdapter extends RecyclerView.Adapter<AttendanceViewAd
         this.students = students;
         this.context=context;
 
-        flag=0;
-        firstclicked=0;
+
     }
 
 
@@ -87,26 +85,28 @@ public class AttendanceViewAdapter extends RecyclerView.Adapter<AttendanceViewAd
             db=FirebaseFirestore.getInstance();
             collectionReference=db.collection("Student");
             present=itemView.findViewById(R.id.btPresent);
-            pos=0;
+            final int[] flag = {0};
+            final int[] firstclicked = {0};
             absent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
                     Log.i("Attendomate","Absent");
 
-                    if(flag==1||firstclicked==0)
-                    {   absent.setBackgroundColor(Color.RED);
+                    if(flag[0] ==1|| firstclicked[0] ==0)
+                    {
+                        absent.setBackgroundColor(Color.RED);
                         present.setBackgroundColor(0xFFC7C8C8);
-                        students.get(pos).setAttCount(students.get(pos).getAttCount()-1);
-                        attCount.setText(students.get(pos).getAttCount().toString());
-                        flag=0;
-                        firstclicked=1;
-                        collectionReference.whereEqualTo("RollNo",students.get(pos).getrNo()).get()
+                        students.get(getAdapterPosition()).setAttCount(students.get(getAdapterPosition()).getAttCount()-1);
+                        attCount.setText(students.get(getAdapterPosition()).getAttCount().toString());
+                        flag[0] =0;
+                        firstclicked[0] =1;
+                        collectionReference.whereEqualTo("RollNo",students.get(getAdapterPosition()).getrNo()).get()
                                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                                     @Override
                                     public void onSuccess(QuerySnapshot querySnapshot) {
                                         DocumentReference documentReference=querySnapshot.getDocuments().get(0).getReference();
-                                        documentReference.update("Attendance",students.get(pos).getAttCount()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        documentReference.update("Attendance",students.get(getAdapterPosition()).getAttCount()).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
                                                 Log.i("Attendomate","Success");
@@ -135,20 +135,20 @@ public class AttendanceViewAdapter extends RecyclerView.Adapter<AttendanceViewAd
             present.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                   if(flag==0||firstclicked==0){
-                    Log.i("Attendomate","Present");
-                    students.get(pos).setAttCount(students.get(pos).getAttCount()+1);
+                   if(flag[0] ==0|| firstclicked[0] ==0){
+                       Log.i("Attendomate","Present");
+                    students.get(getAdapterPosition()).setAttCount(students.get(getAdapterPosition()).getAttCount()+1);
                     present.setBackgroundColor(Color.GREEN);
                     absent.setBackgroundColor(0xFFC7C8C8);
-                       attCount.setText(students.get(pos).getAttCount().toString());
-                       firstclicked=1;
-                    flag=1;
-                   collectionReference.whereEqualTo("RollNo",students.get(pos).getrNo()).get()
+                       attCount.setText(students.get(getAdapterPosition()).getAttCount().toString());
+                       firstclicked[0] =1;
+                    flag[0] =1;
+                   collectionReference.whereEqualTo("RollNo",students.get(getAdapterPosition()).getrNo()).get()
                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                        @Override
                        public void onSuccess(QuerySnapshot querySnapshot) {
                            DocumentReference documentReference=querySnapshot.getDocuments().get(0).getReference();
-                                    documentReference.update("Attendance",students.get(pos).getAttCount()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    documentReference.update("Attendance",students.get(getAdapterPosition()).getAttCount()).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                             Log.i("Attendomate","Success");
